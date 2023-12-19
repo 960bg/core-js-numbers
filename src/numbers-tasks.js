@@ -18,8 +18,9 @@
  *   5, 10 => 50
  *   5, 5  => 25
  */
-function getRectangleArea(/* width, height */) {
-  throw new Error('Not implemented');
+function getRectangleArea(width, height) {
+  return width * height;
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -33,8 +34,9 @@ function getRectangleArea(/* width, height */) {
  *   3.14 => 19.729201864543903
  *   0    => 0
  */
-function getCircleCircumference(/* radius */) {
-  throw new Error('Not implemented');
+function getCircleCircumference(radius) {
+  // throw new Error('Not implemented');
+  return 2 * Math.PI * radius;
 }
 
 /**
@@ -49,8 +51,28 @@ function getCircleCircumference(/* radius */) {
  *  10, 0  => 5
  *  -3, 3  => 0
  */
-function getAverage(/* value1, value2 */) {
-  throw new Error('Not implemented');
+function getAverage(...args) {
+  // throw new Error('Not implemented');
+  let count = 0;
+  const fn = (acc, val, index) => {
+    const func = () => {
+      const f = () => {
+        const a = Number(acc);
+        const b = Number(val);
+        const d = Number(a + b / args.length);
+        count += 1;
+        console.log('count: ', count);
+        console.log('a: ', a);
+        console.log(`Число${index + 1}:`, b);
+        return d;
+      };
+      return f();
+    };
+    return func();
+  };
+  const res = args.reduce(fn, 0);
+  console.log(res);
+  return res;
 }
 
 /**
@@ -68,8 +90,11 @@ function getAverage(/* value1, value2 */) {
  *   (0,0) (1,0)    => 1
  *   (-5,0) (10,-10) => 18.027756377319946
  */
-function getDistanceBetweenPoints(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+function getDistanceBetweenPoints(x1, y1, x2, y2) {
+  // throw new Error('Not implemented');
+  // AB = √(xb - xa)2 + (yb - ya)2
+  const ab = Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+  return ab;
 }
 
 /**
@@ -84,8 +109,9 @@ function getDistanceBetweenPoints(/* x1, y1, x2, y2 */) {
  *   x + 8 = 0       => -8
  *   5*x = 0         => 0
  */
-function getLinearEquationRoot(/* a, b */) {
-  throw new Error('Not implemented');
+function getLinearEquationRoot(a, b) {
+  // throw new Error('Not implemented');
+  return -b / a;
 }
 
 /**
@@ -105,8 +131,20 @@ function getLinearEquationRoot(/* a, b */) {
  *   (0,-1) (1,0)    => π/2
  *   (0,1) (0,1)     => 0
  */
-function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+function getAngleBetweenVectors(x1, y1, x2, y2) {
+  const ab = x1 * x2 + y1 * y2;
+  console.log('ab: ', ab);
+  const modA = Math.sqrt(x1 * x1 + y1 * y1);
+  console.log('modA: ', modA);
+
+  const modB = Math.sqrt(x2 * x2 + y2 * y2);
+  console.log('modB: ', modB);
+
+  const modAmodB = modA * modB;
+  console.log('modAmodB: ', modAmodB);
+
+  const cosAB = Math.acos(ab / modAmodB);
+  return cosAB;
 }
 
 /**
@@ -122,8 +160,12 @@ function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
  *     5     => 5
  *     0     => 0
  */
-function getLastDigit(/* value */) {
-  throw new Error('Not implemented');
+function getLastDigit(value) {
+  console.log('function getLastDigit(value):');
+  const res = value % 10;
+  console.log('value:', value);
+  console.log('res:', res);
+  return res;
 }
 
 /**
@@ -137,8 +179,9 @@ function getLastDigit(/* value */) {
  *     '37'     => 37
  * '-525.5'     => -525.5
  */
-function parseNumberFromString(/* value */) {
-  throw new Error('Not implemented');
+function parseNumberFromString(value) {
+  console.log('function parseNumberFromString(value):');
+  return +value;
 }
 
 /**
@@ -154,8 +197,11 @@ function parseNumberFromString(/* value */) {
  *   3,3,3   => 5.196152422706632
  *   1,2,3   => 3.741657386773941
  */
-function getParallelepipedDiagonal(/* a, b, c */) {
-  throw new Error('Not implemented');
+function getParallelepipedDiagonal(a, b, c) {
+  console.log('function getParallelepipedDiagonal(value):');
+  const res = Math.sqrt(a * a + b * b + c * c);
+  console.log(res);
+  return res;
 }
 
 /**
@@ -175,8 +221,18 @@ function getParallelepipedDiagonal(/* a, b, c */) {
  *   1678, 2  => 1700
  *   1678, 3  => 2000
  */
-function roundToPowerOfTen(/* num, pow */) {
-  throw new Error('Not implemented');
+function roundToPowerOfTen(num, pow) {
+  console.log('function roundToPowerOfTen(value):');
+
+  if (pow === 0) {
+    return num;
+  }
+
+  const stepen = 10 ** pow;
+  console.log('stepen', stepen);
+  const res = Math.round(num / stepen) * stepen;
+  console.log(res);
+  return res;
 }
 
 /**
@@ -196,8 +252,24 @@ function roundToPowerOfTen(/* num, pow */) {
  *   16 => false
  *   17 => true
  */
-function isPrime(/* n */) {
-  throw new Error('Not implemented');
+function isPrime(n) {
+  let res = true;
+  console.log('function isPrime(value):');
+  console.log('n:', n);
+
+  if (n <= 1) {
+    console.log('false');
+    res = false;
+  }
+
+  for (let i = 2; i < n; i++) {
+    if (n % i === 0) {
+      res = false;
+    }
+  }
+
+  console.log('res:', res);
+  return res;
 }
 
 /**
@@ -215,8 +287,18 @@ function isPrime(/* n */) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+function toNumber(value, def) {
+  console.log('function toNumber(value):');
+  console.log('value', value);
+  console.log('typeof +value', typeof (+value + 1));
+  const a = +value + 1;
+  console.log('a', a);
+
+  if (Number.isSafeInteger(+value + 1)) {
+    return +value;
+  }
+
+  return def;
 }
 
 /**
@@ -230,8 +312,8 @@ function toNumber(/* value, def */) {
  *   -2 => -8
  *   0  => 0
  */
-function getCube(/* num */) {
-  throw new Error('Not implemented');
+function getCube(num) {
+  return num ** 3;
 }
 
 /**
@@ -247,8 +329,15 @@ function getCube(/* num */) {
  *   3  => 2
  *   10 => 55
  */
-function getFibonacciNumber(/* index */) {
-  throw new Error('Not implemented');
+function getFibonacciNumber(index) {
+  console.log('function getFibonacciNumber(value):');
+
+  const mas = [0, 1];
+  for (let i = 1; i <= index; i++) {
+    mas.push(mas[i - 1] + mas[i]);
+    console.log('mas[i - 1] + mas[i]', mas[i - 1] + mas[i]);
+  }
+  return mas[index];
 }
 
 /**
@@ -262,8 +351,12 @@ function getFibonacciNumber(/* index */) {
  *   10 => 55 // (1+2+3+...+10)
  *   1  => 1
  */
-function getSumToN(/* n */) {
-  throw new Error('Not implemented');
+function getSumToN(n) {
+  let sum = 0;
+  for (let i = 1; i <= n; i++) {
+    sum += i;
+  }
+  return sum;
 }
 
 /**
@@ -277,8 +370,29 @@ function getSumToN(/* n */) {
  *   202 => 4  // (2+0+2)
  *   5   => 5  // 5
  */
-function getSumOfDigits(/* num */) {
-  throw new Error('Not implemented');
+function getSumOfDigits(num) {
+  console.log('function getSumOfDigits(value):');
+  console.log('num', num);
+
+  if (num < 10) {
+    return num;
+  }
+
+  let sum = 0;
+  function sumOfDigits(number) {
+    console.log('sumOfDigits: [num] = ', number);
+    if (number < 10) {
+      sum += number;
+      console.log('sumOfDigits: [sum] = ', sum);
+      return sum;
+    }
+    sum += number % 10;
+    console.log('sumOfDigits: [sum] = ', sum);
+
+    return sumOfDigits(Math.trunc(number / 10));
+  }
+  sumOfDigits(num);
+  return sum;
 }
 
 /**
