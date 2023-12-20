@@ -262,7 +262,7 @@ function isPrime(n) {
     res = false;
   }
 
-  for (let i = 2; i < n; i++) {
+  for (let i = 2; i < n; i += 1) {
     if (n % i === 0) {
       res = false;
     }
@@ -333,7 +333,7 @@ function getFibonacciNumber(index) {
   console.log('function getFibonacciNumber(value):');
 
   const mas = [0, 1];
-  for (let i = 1; i <= index; i++) {
+  for (let i = 1; i <= index; i += 1) {
     mas.push(mas[i - 1] + mas[i]);
     console.log('mas[i - 1] + mas[i]', mas[i - 1] + mas[i]);
   }
@@ -353,7 +353,7 @@ function getFibonacciNumber(index) {
  */
 function getSumToN(n) {
   let sum = 0;
-  for (let i = 1; i <= n; i++) {
+  for (let i = 1; i <= n; i += 1) {
     sum += i;
   }
   return sum;
@@ -713,7 +713,7 @@ function getRandomInteger(min, max) {
   console.log('function getRandomInteger(min, max)');
   console.log(min, '-', max);
   let rand;
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 10; i += 1) {
     rand = Math.floor(min + Math.random() * (max - min + 1));
     // max - Math.random() * max + Math.random() * min
 
@@ -754,9 +754,9 @@ function getCountOfOddNumbers(number) {
   console.log('function getCountOfOddNumbers(number)');
   console.log('number', number);
 
-  for (let i = 1; i <= Math.abs(number); i++) {
+  for (let i = 1; i <= Math.abs(number); i += 1) {
     if (i % 2 !== 0) {
-      count++;
+      count += 1;
     }
   }
   console.log('count', count);
