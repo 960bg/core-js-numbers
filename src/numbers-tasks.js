@@ -20,7 +20,6 @@
  */
 function getRectangleArea(width, height) {
   return width * height;
-  // throw new Error('Not implemented');
 }
 
 /**
@@ -35,7 +34,6 @@ function getRectangleArea(width, height) {
  *   0    => 0
  */
 function getCircleCircumference(radius) {
-  // throw new Error('Not implemented');
   return 2 * Math.PI * radius;
 }
 
@@ -52,18 +50,13 @@ function getCircleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(...args) {
-  // throw new Error('Not implemented');
-  // const fn = (acc, val, index) => {
   const fn = (acc, val) => {
     const a = Number(acc);
     const b = Number(val);
     const d = Number(a + b / args.length);
-    // console.log('a: ', a);
-    // console.log(`Число${index + 1}:`, b);
     return d;
   };
   const res = args.reduce(fn, 0);
-  // console.log(res);
   return res;
 }
 
@@ -83,8 +76,6 @@ function getAverage(...args) {
  *   (-5,0) (10,-10) => 18.027756377319946
  */
 function getDistanceBetweenPoints(x1, y1, x2, y2) {
-  // throw new Error('Not implemented');
-  // AB = √(xb - xa)2 + (yb - ya)2
   const ab = Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
   return ab;
 }
@@ -102,7 +93,6 @@ function getDistanceBetweenPoints(x1, y1, x2, y2) {
  *   5*x = 0         => 0
  */
 function getLinearEquationRoot(a, b) {
-  // throw new Error('Not implemented');
   return -b / a;
 }
 
@@ -125,15 +115,12 @@ function getLinearEquationRoot(a, b) {
  */
 function getAngleBetweenVectors(x1, y1, x2, y2) {
   const ab = x1 * x2 + y1 * y2;
-  // console.log('ab: ', ab);
+
   const modA = Math.sqrt(x1 * x1 + y1 * y1);
-  // console.log('modA: ', modA);
 
   const modB = Math.sqrt(x2 * x2 + y2 * y2);
-  // console.log('modB: ', modB);
 
   const modAmodB = modA * modB;
-  // console.log('modAmodB: ', modAmodB);
 
   const cosAB = Math.acos(ab / modAmodB);
   return cosAB;
@@ -153,10 +140,7 @@ function getAngleBetweenVectors(x1, y1, x2, y2) {
  *     0     => 0
  */
 function getLastDigit(value) {
-  // console.log('function getLastDigit(value):');
   const res = value % 10;
-  // console.log('value:', value);
-  // console.log('res:', res);
   return res;
 }
 
@@ -172,7 +156,6 @@ function getLastDigit(value) {
  * '-525.5'     => -525.5
  */
 function parseNumberFromString(value) {
-  // console.log('function parseNumberFromString(value):');
   return +value;
 }
 
@@ -190,9 +173,7 @@ function parseNumberFromString(value) {
  *   1,2,3   => 3.741657386773941
  */
 function getParallelepipedDiagonal(a, b, c) {
-  // console.log('function getParallelepipedDiagonal(value):');
   const res = Math.sqrt(a * a + b * b + c * c);
-  // console.log(res);
   return res;
 }
 
@@ -214,16 +195,12 @@ function getParallelepipedDiagonal(a, b, c) {
  *   1678, 3  => 2000
  */
 function roundToPowerOfTen(num, pow) {
-  // console.log('function roundToPowerOfTen(value):');
-
   if (pow === 0) {
     return num;
   }
 
   const stepen = 10 ** pow;
-  // console.log('stepen', stepen);
   const res = Math.round(num / stepen) * stepen;
-  // console.log(res);
   return res;
 }
 
@@ -246,11 +223,8 @@ function roundToPowerOfTen(num, pow) {
  */
 function isPrime(n) {
   let res = true;
-  // console.log('function isPrime(value):');
-  // console.log('n:', n);
 
   if (n <= 1) {
-    // console.log('false');
     res = false;
   }
 
@@ -260,7 +234,6 @@ function isPrime(n) {
     }
   }
 
-  // console.log('res:', res);
   return res;
 }
 
@@ -280,12 +253,6 @@ function isPrime(n) {
  *   toNumber(new Number(42), 0) => 42
  */
 function toNumber(value, def) {
-  // console.log('function toNumber(value):');
-  // console.log('value', value);
-  // console.log('typeof +value', typeof (+value + 1));
-  // const a = +value + 1;
-  // console.log('a', a);
-
   if (Number.isSafeInteger(+value + 1)) {
     return +value;
   }
@@ -322,12 +289,9 @@ function getCube(num) {
  *   10 => 55
  */
 function getFibonacciNumber(index) {
-  // console.log('function getFibonacciNumber(value):');
-
   const mas = [0, 1];
   for (let i = 1; i <= index; i += 1) {
     mas.push(mas[i - 1] + mas[i]);
-    // console.log('mas[i - 1] + mas[i]', mas[i - 1] + mas[i]);
   }
   return mas[index];
 }
@@ -363,24 +327,17 @@ function getSumToN(n) {
  *   5   => 5  // 5
  */
 function getSumOfDigits(num) {
-  // console.log('function getSumOfDigits(value):');
-  // console.log('num', num);
-
   if (num < 10) {
     return num;
   }
 
   let sum = 0;
   function sumOfDigits(number) {
-    // console.log('sumOfDigits: [num] = ', number);
     if (number < 10) {
       sum += number;
-      // console.log('sumOfDigits: [sum] = ', sum);
       return sum;
     }
     sum += number % 10;
-    // console.log('sumOfDigits: [sum] = ', sum);
-
     return sumOfDigits(Math.trunc(number / 10));
   }
   sumOfDigits(num);
@@ -399,20 +356,14 @@ function getSumOfDigits(num) {
  *   15  => false
  */
 function isPowerOfTwo(num) {
-  // console.log('function isPowerOfTwo(value):');
   if (num === 1) {
     return true;
   }
 
   let pow2 = 1;
   while (pow2 < num) {
-    // console.log('pow2', pow2);
-    // console.log('num', num);
     pow2 *= 2;
   }
-  // console.log('[after for]: pow2', pow2);
-  // console.log('[after for]: num', num);
-  // console.log('pow2 === num', pow2 === num);
   return pow2 === num;
 }
 
@@ -442,12 +393,7 @@ function getSine(num) {
  * 2, 2    => '10'
  */
 function numberToStringInBase(number, base) {
-  // console.log('function isPowerOfTwo(value):');
-  // console.log('number:', number);
-  // console.log('base:', base);
-
   const res = number.toString(base);
-  // console.log('res:', res);
   return res;
 }
 
@@ -526,11 +472,6 @@ function getNumberValue(number) {
  * '5'      => false
  */
 function isNumber(number) {
-  // console.log('function isNumber(value):');
-  // console.log('number', number);
-  // console.log('number + 1', number + 1);
-  // console.log('typeof number:', typeof number);
-  // console.log('Number.isSafeInteger(number)', Number.isFinite(number));
   return Number.isFinite(number);
 }
 
@@ -578,9 +519,6 @@ function getFloatOnString(str) {
  * '10', 8              => 8
  */
 function getIntegerOnString(str, base) {
-  // console.log('function getIntegerOnString(str, base):');
-  // console.log('str:', str, 'base:', base);
-  // console.log('res = ', Number.parseInt(str, base));
   return Number.parseInt(str, base);
 }
 
@@ -702,14 +640,9 @@ function getMaxNumber(...args) {
  * -1, 1 => -1 | 0 | 1
  */
 function getRandomInteger(min, max) {
-  // console.log('function getRandomInteger(min, max)');
-  // console.log(min, '-', max);
   let rand;
   for (let i = 0; i < 10; i += 1) {
     rand = Math.floor(min + Math.random() * (max - min + 1));
-    // max - Math.random() * max + Math.random() * min
-
-    // console.log('max - Math.random() * min;', rand);
   }
   return rand;
 }
@@ -743,15 +676,13 @@ function getHypotenuse(a, b) {
  */
 function getCountOfOddNumbers(number) {
   let count = 0;
-  // console.log('function getCountOfOddNumbers(number)');
-  // console.log('number', number);
 
   for (let i = 1; i <= Math.abs(number); i += 1) {
     if (i % 2 !== 0) {
       count += 1;
     }
   }
-  // console.log('count', count);
+
   return count;
 }
 
