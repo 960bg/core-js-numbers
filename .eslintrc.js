@@ -25,7 +25,6 @@ module.exports = {
     ],
 
   },
-  plugins: [
-    'prettier'
-  ],
+  plugins: ['prettier'],
+  noInlineConfig: true,
 };
